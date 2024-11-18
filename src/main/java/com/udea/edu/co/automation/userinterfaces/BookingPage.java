@@ -65,4 +65,12 @@ public class BookingPage extends PageObject{
     public static final Target ERROR_MESSAGE = Target
     .the("Error message")
     .locatedBy("//*[@id=\"swal2-html-container\"]");
+
+    public static final Target BUTTON_VIEW_HISTORY = Target
+    .the("Button view history")
+    .locatedBy("//*[@id=\"viewBookings\"]");
+
+    public static final Target BOOKINGS_TABLE_TITLE = Target
+    .the("Bookings table title")
+    .locatedBy("//*[@id=\"bookingList\"]");
 }
