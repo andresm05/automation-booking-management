@@ -73,4 +73,12 @@ public class BookingPage extends PageObject{
     public static final Target BOOKINGS_TABLE_TITLE = Target
     .the("Bookings table title")
     .locatedBy("//*[@id=\"bookingList\"]");
+
+    public static final Target DELETE_BUTTON = Target
+    .the("Delete button")
+    .locatedBy("//*[@id=\"delete12\"]");
+
+    public static final Target CONFIRM_DELETE_BUTTON = Target
+    .the("Confirm delete button")
+    .locatedBy("//*[@id=\"confirmDelete12\"]");
 }

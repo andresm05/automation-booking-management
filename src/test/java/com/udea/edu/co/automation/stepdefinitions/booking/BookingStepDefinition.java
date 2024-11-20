@@ -7,10 +7,12 @@ import static org.hamcrest.Matchers.equalTo;
 import org.openqa.selenium.WebDriver;
 
 import com.udea.edu.co.automation.questions.BookingConfirmation;
+import com.udea.edu.co.automation.questions.BookingDeleteConfirmation;
 import com.udea.edu.co.automation.questions.BookingError;
 import com.udea.edu.co.automation.questions.BookingHistory;
 import com.udea.edu.co.automation.tasks.AddBooking;
 import com.udea.edu.co.automation.tasks.AddBookingWithoutData;
+import com.udea.edu.co.automation.tasks.ConfirmDeleteBooking;
 import com.udea.edu.co.automation.tasks.FillFlight;
 import com.udea.edu.co.automation.tasks.FillPassengerData;
 import com.udea.edu.co.automation.tasks.GoToBookingHistory;
@@ -98,11 +100,26 @@ public class BookingStepDefinition {
         sleep(1000);
     }
 
-    @Then("the system should display the booking confirmation")
-    public void theSystemShouldDisplayTheBookingConfirmation() {
+    @And("the user deletes a booking")
+    public void theUserDeletesABooking() {
+        user.attemptsTo(ConfirmDeleteBooking.remove());
+        sleep(1000);
+    }
+
+    @Then("the system should display the booking confirmation: {string}")
+    public void theSystemShouldDisplayTheBookingConfirmation(String message) {
         sleep(2000);
         user.should(seeThat(
-                BookingConfirmation.isDisplayed(),
+                BookingConfirmation.desplaysMessage(message),
+                equalTo(true)
+        ));
+    }
+
+    @Then("the system should display the message {string}")
+    public void theSystemShouldDisplayTheMessage(String message) {
+        sleep(2000);
+        user.should(seeThat(
+                BookingDeleteConfirmation.displaysMessage(message),
                 equalTo(true)
         ));
     }

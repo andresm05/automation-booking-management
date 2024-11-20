@@ -9,10 +9,10 @@ Feature: Booking flights
     Scenario: The user makes a booking successfully
         When the user selects the flight "Cartagena - Cali"
         And the user enters the passenger details as follows:
-            | name   | lastName | email            | phone      | typeDni                  | dni        | nationality | age |
-            | Alejandro | Cepeda    | alejc@gmail.com | 1234567890 | Cedula de Ciudadania     | 17 | Colombia    | 25  |
+            | name   | lastName | email            | phone      | typeDni                  | dni   | nationality | age |
+            | Rony | Gutierrez    | ronygogo@gmail.com | 12345670 | Cedula de Ciudadania     | 20 | Colombia    | 25  |
         And the user confirms the booking
-        Then the system should display the booking confirmation
+        Then the system should display the booking confirmation: "Reserva guardada"
 
 
     Scenario: The user makes a booking with invalid data
@@ -23,3 +23,8 @@ Feature: Booking flights
     Scenario: retreve all bookings
         When the user navigates to the booking history
         Then the system should display all bookings
+
+    Scenario: delete a booking
+        When the user navigates to the booking history
+        And the user deletes a booking
+        Then the system should display the message "Reserva de pasajero eliminada"
