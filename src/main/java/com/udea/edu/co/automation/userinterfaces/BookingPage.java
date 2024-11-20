@@ -76,15 +76,15 @@ public class BookingPage extends PageObject{
 
     public static final Target DELETE_BUTTON = Target
     .the("Delete button")
-    .locatedBy("//*[@id=\"delete14\"]");
+    .locatedBy("//*[@id=\"delete30\"]");
 
     public static final Target CONFIRM_DELETE_BUTTON = Target
     .the("Confirm delete button")
-    .locatedBy("//*[@id=\"confirmDelete14\"]");
+    .locatedBy("//*[@id=\"confirmDelete30\"]");
 
     public static final Target VIEW_BOOKING_BUTTON = Target
     .the("View booking button")
-    .locatedBy("//*[@id=\"search15\"]");
+    .locatedBy("//*[@id=\"search31\"]");
 
     public static final Target EDIT_BUTTON = Target
     .the("Edit button")
