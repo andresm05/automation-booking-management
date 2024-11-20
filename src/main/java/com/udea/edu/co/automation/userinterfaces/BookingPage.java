@@ -84,7 +84,7 @@ public class BookingPage extends PageObject{
 
     public static final Target VIEW_BOOKING_BUTTON = Target
     .the("View booking button")
-    .locatedBy("//*[@id=\"search31\"]");
+    .locatedBy("//*[@id=\"search16\"]");
 
     public static final Target EDIT_BUTTON = Target
     .the("Edit button")
