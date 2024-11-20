@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.equalTo;
 import org.openqa.selenium.WebDriver;
 
 import com.udea.edu.co.automation.questions.BookingConfirmation;
-import com.udea.edu.co.automation.questions.BookingDeleteConfirmation;
+import com.udea.edu.co.automation.questions.BookingAlterConfirmation;
 import com.udea.edu.co.automation.questions.BookingError;
 import com.udea.edu.co.automation.questions.BookingHistory;
 import com.udea.edu.co.automation.tasks.AddBooking;
@@ -17,6 +17,7 @@ import com.udea.edu.co.automation.tasks.FillFlight;
 import com.udea.edu.co.automation.tasks.FillPassengerData;
 import com.udea.edu.co.automation.tasks.GoToBookingHistory;
 import com.udea.edu.co.automation.tasks.OpenUrl;
+import com.udea.edu.co.automation.tasks.UpdatePassengerData;
 import com.udea.edu.co.automation.utils.Constants;
 import static com.udea.edu.co.automation.utils.Constants.sleep;
 
@@ -89,6 +90,23 @@ public class BookingStepDefinition {
 
     }
 
+    @And("the user updates a booking with the following data:")
+    public void theUserUpdatesABookingWithTheFollowingData(DataTable dataTable) {
+        List<Map<String, String>> passengerDetails = dataTable.asMaps(String.class, String.class);
+
+        passengerDetails.forEach(
+                passenger -> {
+                    user.attemptsTo(
+                            UpdatePassengerData.withlastName(
+                                    passenger.get("lastName")
+                            )
+                    );
+                });
+
+        sleep(1000);
+        
+    }
+
     @And("the user confirms the booking")
     public void theUserConfirmsTheBooking() {
         user.attemptsTo(AddBooking.next());
@@ -119,7 +137,7 @@ public class BookingStepDefinition {
     public void theSystemShouldDisplayTheMessage(String message) {
         sleep(2000);
         user.should(seeThat(
-                BookingDeleteConfirmation.displaysMessage(message),
+                BookingAlterConfirmation.displaysMessage(message),
                 equalTo(true)
         ));
     }

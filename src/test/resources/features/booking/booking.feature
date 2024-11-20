@@ -10,7 +10,7 @@ Feature: Booking flights
         When the user selects the flight "Cartagena - Cali"
         And the user enters the passenger details as follows:
             | name   | lastName | email            | phone      | typeDni                  | dni   | nationality | age |
-            | Rony | Gutierrez    | ronygogo@gmail.com | 12345670 | Cedula de Ciudadania     | 20 | Colombia    | 25  |
+            | Esteban | Bonilla    | estebanbb@gmail.com | 12345670 | Cedula de Ciudadania     | 22 | Colombia    | 25  |
         And the user confirms the booking
         Then the system should display the booking confirmation: "Reserva guardada"
 
@@ -28,3 +28,10 @@ Feature: Booking flights
         When the user navigates to the booking history
         And the user deletes a booking
         Then the system should display the message "Reserva de pasajero eliminada"
+
+    Scenario: update a booking
+        When the user navigates to the booking history
+        And the user updates a booking with the following data:
+            | lastName |
+            | Morales |
+        Then the system should display the message "Pasajero actualizado"

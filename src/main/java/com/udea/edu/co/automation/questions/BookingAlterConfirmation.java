@@ -7,11 +7,11 @@ import static com.udea.edu.co.automation.userinterfaces.BookingPage.*;
 
 import net.serenitybdd.screenplay.Actor;
 
-public class BookingDeleteConfirmation implements Question<Boolean> {
+public class BookingAlterConfirmation implements Question<Boolean> {
 
     private final String expectedMessage;
 
-    public BookingDeleteConfirmation(String expectedMessage) {
+    public BookingAlterConfirmation(String expectedMessage) {
         this.expectedMessage = expectedMessage;
     }
 
@@ -21,8 +21,8 @@ public class BookingDeleteConfirmation implements Question<Boolean> {
         return actualMessage.equals(expectedMessage);
     }
 
-    public static BookingDeleteConfirmation displaysMessage(String expectedMessage) {
-        return new BookingDeleteConfirmation(expectedMessage);
+    public static BookingAlterConfirmation displaysMessage(String expectedMessage) {
+        return new BookingAlterConfirmation(expectedMessage);
     }
 
 }
