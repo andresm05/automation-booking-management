@@ -1,7 +1,7 @@
 Feature: Booking flights
     As a user
-    I want to be able to make a booking
-    So that I can reserve a flight
+    I want to be able to make and manage a booking
+    So that I can reserve, update, or delete a flight
 
     Background:
         Given the user is on the booking page
