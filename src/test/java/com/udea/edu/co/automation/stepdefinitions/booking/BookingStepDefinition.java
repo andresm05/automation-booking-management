@@ -28,7 +28,6 @@ import net.serenitybdd.annotations.Managed;
 import net.serenitybdd.screenplay.Actor;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
-import net.serenitybdd.screenplay.actors.OnStage;
 import static net.serenitybdd.screenplay.actors.OnStage.setTheStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
@@ -48,12 +47,6 @@ public class BookingStepDefinition {
         setTheStage(new OnlineCast());
     }
 
-    @Before
-    public void setup() {
-        OnStage.setTheStage(new OnlineCast());
-        OnStage.theActorCalled("author");
-    }
-
     @Given("the user is on the booking page")
     public void theUserIsOnTheBookingPage() {
         user.attemptsTo(OpenUrl.url(Constants.URL_HOME));
@@ -62,11 +55,13 @@ public class BookingStepDefinition {
     @When("the user selects the flight {string}")
     public void theUserSelectsTheFlight(String flight) {
         user.attemptsTo(FillFlight.withFlight(flight));
+        sleep(1000);
     }
 
     @When("the user navigates to the booking history")
     public void theUserNavigatesToTheBookingHistory() {
         user.attemptsTo(GoToBookingHistory.url());
+        sleep(1000);
     }
 
     @And("the user enters the passenger details as follows:")
